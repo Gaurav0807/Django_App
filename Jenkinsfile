@@ -11,7 +11,7 @@ def deploy_code(branch_name){
 
     sh """
         echo 'Start pushing code to s3\n'
-        echo "After Setting ENV Name ${env.ENV_NAME}"
+        // echo "After Setting ENV Name ${env.ENV_NAME}"
         aws s3 sync . "s3://todo-bucket-web-app/main/${product_name}/code/" --region 'us-east-1'
     """
 }
