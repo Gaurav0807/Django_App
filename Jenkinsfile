@@ -23,7 +23,7 @@ def getEnvironmentName(branch) {
   } else if (branch.toLowerCase() == 'release-qa') {
     return 'qa'
   } else {
-    return null
+    return 'default'
   }
 }
 
