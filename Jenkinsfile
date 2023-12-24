@@ -16,7 +16,7 @@ def deploy_code(branch_name){
 
 //Deploy env. 
 def getEnvironmentName(branch) {
-  if (branch.toLowerCase() == 'master') {
+  if (branch.toLowerCase() == 'main') {
     return 'prod'
   } else if (branch.toLowerCase() == 'release-qa') {
     return 'qa'
@@ -47,7 +47,7 @@ pipeline{
                 anyOf{
                     allOf{
                         expression{
-                            env.BRANCH_NAME.toLowerCase() == 'main
+                            env.BRANCH_NAME.toLowerCase() == 'main'
                     }
                         expression{
                             params.s3_deploy == true
