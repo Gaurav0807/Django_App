@@ -31,12 +31,12 @@ pipeline{
     parameters{
         booleanParam(name: 's3_deploy', defaultValue: false, description: 'Toggle to decide whether to deploy or not')
     }
-    echo "Before Setting ENV Name ${env.ENV_NAME}
+    echo "Before Setting ENV Name ${env.ENV_NAME}"
     
     environment{
         ENV_NAME = getEnvironmentName(env.BRANCH_NAME)
     }
-    echo "After Setting ENV Name ${env.ENV_NAME}
+    echo "After Setting ENV Name ${env.ENV_NAME}"
     
     stages {
         stage("Code"){
