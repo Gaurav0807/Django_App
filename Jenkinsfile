@@ -15,16 +15,16 @@ def deploy_code(branch_name){
     """
 }
 
-//Deploy env. 
-// def getEnvironmentName(branch) {
-//   if (branch.toLowerCase() == 'main') {
-//     return 'prod'
-//   } else if (branch.toLowerCase() == 'release-qa') {
-//     return 'qa'
-//   } else {
-//     return 'default'
-//   }
-// }
+Deploy env. 
+def getEnvironmentName(branch) {
+  if (branch.toLowerCase() == 'main') {
+    return 'prod'
+  } else if (branch.toLowerCase() == 'release-qa') {
+    return 'qa'
+  } else {
+    return null
+  }
+}
 
 pipeline{
     agent any
@@ -34,9 +34,9 @@ pipeline{
     }
    
     
-    // environment{
-    //     ENV_NAME = getEnvironmentName(env.BRANCH_NAME)
-    // }
+    environment{
+        ENV_NAME = getEnvironmentName(env.BRANCH_NAME)
+    }
     
     
     stages {
@@ -70,7 +70,6 @@ pipeline{
             }
             steps {
                 deploy_code(env.BRANCH_NAME) 
-                // echo "After Setting ENV Name ${env.ENV_NAME}"
             }
         }
         stage("build"){
