@@ -16,15 +16,15 @@ def deploy_code(branch_name){
 }
 
 //Deploy env. 
-def getEnvironmentName(branch) {
-  if (branch.toLowerCase() == 'main') {
-    return 'prod'
-  } else if (branch.toLowerCase() == 'release-qa') {
-    return 'qa'
-  } else {
-    return 'default'
-  }
-}
+// def getEnvironmentName(branch) {
+//   if (branch.toLowerCase() == 'main') {
+//     return 'prod'
+//   } else if (branch.toLowerCase() == 'release-qa') {
+//     return 'qa'
+//   } else {
+//     return 'default'
+//   }
+// }
 
 pipeline{
     agent any
