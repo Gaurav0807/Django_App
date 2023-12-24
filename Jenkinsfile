@@ -7,9 +7,11 @@
 def deploy_code(branch_name){
     product_name ="Todo_app"
     println "Pushing code to s3"
+    
 
     sh """
         echo 'Start pushing code to s3\n'
+        echo "After Setting ENV Name ${env.ENV_NAME}"
         aws s3 sync . "s3://todo-bucket-web-app/$env.ENV_NAME/${product_name}/code/" --region 'us-east-1'
     """
 }
@@ -31,18 +33,19 @@ pipeline{
     parameters{
         booleanParam(name: 's3_deploy', defaultValue: false, description: 'Toggle to decide whether to deploy or not')
     }
-    echo "Before Setting ENV Name ${env.ENV_NAME}"
+   
     
     environment{
         ENV_NAME = getEnvironmentName(env.BRANCH_NAME)
     }
-    echo "After Setting ENV Name ${env.ENV_NAME}"
+    
     
     stages {
         stage("Code"){
             steps{
                 echo "Cloning the code"
                 git url: "https://github.com/Gaurav0807/Django_App.git", branch: "main"
+                echo "Before Setting ENV Name ${env.ENV_NAME}"
             }
         }
         stage("Code Push"){
@@ -67,7 +70,8 @@ pipeline{
             }
             }
             steps {
-                deploy_code(env.BRANCH_NAME)                
+                deploy_code(env.BRANCH_NAME) 
+                echo "After Setting ENV Name ${env.ENV_NAME}"
             }
         }
         stage("build"){
@@ -93,4 +97,5 @@ pipeline{
             }
         }
     }
+    
 }
