@@ -34,9 +34,9 @@ pipeline{
     }
    
     
-    environment{
-        ENV_NAME = getEnvironmentName(env.BRANCH_NAME)
-    }
+    // environment{
+    //     ENV_NAME = getEnvironmentName(env.BRANCH_NAME)
+    // }
     
     
     stages {
