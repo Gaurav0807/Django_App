@@ -45,7 +45,7 @@ pipeline{
             steps{
                 echo "Cloning the code"
                 git url: "https://github.com/Gaurav0807/Django_App.git", branch: "main"
-                echo "Before Setting ENV Name ${env.ENV_NAME}"
+                // echo "Before Setting ENV Name ${env.ENV_NAME}"
             }
         }
         stage("Code Push"){
